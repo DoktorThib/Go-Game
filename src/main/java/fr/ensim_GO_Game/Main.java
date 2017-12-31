@@ -11,7 +11,7 @@ public class Main extends Application {
 		
     private HBox mainlayout;
     private GoController go;
-    private SideController sideController;;
+    private SideController sideController;
 
 	public static void main(String[] args) {
        launch(args);

@@ -27,9 +27,9 @@ public class GoController  extends Control {
                 try{
                     rb_board.placePiece(event.getX(),event.getY());
 
-                    SideController.update_display();
+                    sideController.update_display();
                 }catch (Exception e){
-                    SideController.update_display(e.getMessage());
+                    sideController.update_display(e.getMessage());
                 }
 
             }
@@ -49,7 +49,7 @@ public class GoController  extends Control {
     }
 
     public void setSideControl(SideController SideController) {
-        this.SideController = SideController;
+        this.sideController = SideController;
     }
 
     // overridden version of the resize method
@@ -80,5 +80,5 @@ public class GoController  extends Control {
 
     // private fields of a go board
     GoBoard rb_board;
-    SideController SideController;
+    SideController sideController;
 }

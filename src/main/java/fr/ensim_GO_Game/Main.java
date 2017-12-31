@@ -19,7 +19,7 @@ public class Main extends Application {
 
     @Override
     public void init(){
-        //initializ e mainlayout and reversi control
+        //initialize mainlayout and reverse control
         mainlayout = new HBox();
         go = new GoController();
         mainlayout.getChildren().add(go);

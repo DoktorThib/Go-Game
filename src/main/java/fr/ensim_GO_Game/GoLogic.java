@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class GoLogic implements InterfaceGoLogic  {
 
-	 private GoPiece[][] board;
+		private GoPiece[][] board;
 	    private int player1_score, player2_score;
 	    private int move = 1;
 	    private boolean gameOver = false;

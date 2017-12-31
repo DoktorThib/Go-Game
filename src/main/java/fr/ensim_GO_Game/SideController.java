@@ -32,7 +32,6 @@ public class SideController extends VBox {
     private Label lb_message;
     private Button bt_pass;
     private Button bt_offer_draw;
-    //private Button bt_undo;
     private Button bt_end_game;
 
     //display players name and scores
@@ -53,11 +52,11 @@ public class SideController extends VBox {
     private String player1_name = "Player 1";
     private String player2_name = "Player 2";
 
-    private GoController GoController;
+    private GoController goController;
 
     SideController(GoController GoController){
 
-        this.GoController = GoController;
+        this.goController = GoController;
         initGUI();
         GoController.setSideControl(this);
 
@@ -220,7 +219,7 @@ public class SideController extends VBox {
             public void handle(ActionEvent event) {
 
                 try {
-                    GoController.pass();
+                    goController.pass();
                     update_display("");
                 } catch (Exception e) {
                     update_display(e.getMessage());
@@ -231,7 +230,7 @@ public class SideController extends VBox {
         bt_end_game.setOnAction(new EventHandler <ActionEvent>(){
             //call the compute result function calculate the result
             public void handle(ActionEvent event) {
-                GoController.endGame();
+                goController.endGame();
                 update_display();
             }
         });
@@ -239,8 +238,8 @@ public class SideController extends VBox {
 
         bt_offer_draw.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
-                GoController.reset();
-                update_score_label(GoController.update_score());
+                goController.reset();
+                update_score_label(goController.update_score());
 
                 //reset player label to player 1
                 if(lb_current_player.getText().equals(player2_name)){
@@ -263,7 +262,7 @@ public class SideController extends VBox {
         if(message.equals("")){
 
             //update score label
-            update_score_label(GoController.update_score());
+            update_score_label(goController.update_score());
 
             //update current player label
             update_current_player();

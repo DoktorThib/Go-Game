@@ -74,10 +74,10 @@ public class GoBoard extends Pane {
         can_reverse = new boolean[3][3];
 
         /*Initialization of board*/
-        initialiseBoard();
+        initializeBoard();
         goLogic = new GoLogic(board);
 
-        initialiseLinesBackground();
+        initializeLinesBackground();
         
         resetGame();
 
@@ -105,7 +105,6 @@ public class GoBoard extends Pane {
         }else {
             pieceSelected = -1;
         }
-
         return pieceSelected;
     }
     /*Resizing and relocating the horizontal lines*/
@@ -118,7 +117,7 @@ public class GoBoard extends Pane {
         }
     }
     /*Initialize everything in the board array*/
-    private void initialiseBoard() {
+    public void initializeBoard() {
         //set the array to null object
         for(int i = 0; i < 7; i++)
             for(int j = 0; j < 7; j++) {
@@ -128,7 +127,7 @@ public class GoBoard extends Pane {
 
     }
     /*Initialize the background and the lines*/
-    private void initialiseLinesBackground() {
+    private void initializeLinesBackground() {
 
     	Random r = new Random();
         background = new Rectangle();
@@ -181,8 +180,8 @@ public class GoBoard extends Pane {
         passCount = passCount +1;
         if(passCount >= 2){
             in_play = false;
+            throw new Exception("End of the game");
         }
-        if(passCount >=2)throw new Exception("Game is over");
         swapPlayers();
     }
     /*Resize and relocate all the pieces*/
@@ -202,14 +201,14 @@ public class GoBoard extends Pane {
         final int celly = (int) (y / cell_height);
 
         // if the game is not in play then throw an exception which display game over
-        if(!in_play)throw new Exception("Game is over");
+        if(!in_play)throw new Exception("End of the game");
 
 
 
         goLogic.placePiece(cellx, celly, current_player);
         swapPlayers();
 
-        /*init passCount (End of the game)*/
+        /*init passCount (End of the game, when >2)*/
         passCount =0; 
     }
     // private method that will reset the renders
@@ -224,7 +223,7 @@ public class GoBoard extends Pane {
     public void resetGame() {
 
         resetBoard();
-        initialiseBoard();
+        initializeBoard();
 
         goLogic = new GoLogic(board);
 

@@ -64,29 +64,29 @@ public class SideController extends VBox {
 
     }
 
-    /*initialise GUI for SideController*/
+    /*initialize GUI for SideController*/
     public void initGUI(){
 
         this.setPrefSize(300, 600);
 
-        //initialise the current player display
-        init_current_player();
-
-        //initialise current player control
+        //initialize current player control
         init_player_control();
 
-        //initialise current player Scores and name
+        //initialize current player Scores and name
         init_player_display();
+        
+        //initialize the current player display
+        init_current_player();
 
-        //init event
+        //initialize event
         init_event();
 
     }
 
-    //initialise the current player display
+    //initialize the current player display
     public void init_current_player(){
 
-        //initialise stack pane and label
+        //initialize stack pane and label
         current_player = new StackPane();
         current_player.setId("current_player");
         lb_current_player = new Label();
@@ -136,7 +136,7 @@ public class SideController extends VBox {
         player_control.setAlignment(Pos.CENTER);
 
         this.getChildren().add(player_control);
-
+        player_control.setId("playerControl");
     }
 
 
@@ -170,10 +170,10 @@ public class SideController extends VBox {
         title_box.setPrefSize(300,40);
 
         // Piece styling
-        piece_1.setRadiusX(20);
-        piece_1.setRadiusY(20);
-        piece_2.setRadiusX(20);
-        piece_2.setRadiusY(20);
+        piece_1.setRadiusX(30);
+        piece_1.setRadiusY(30);
+        piece_2.setRadiusX(30);
+        piece_2.setRadiusY(30);
         DropShadow ds = new DropShadow(5.0, 3.0, 3.0, Color.color(0.4, 0.4, 0.4));
         piece_1.setEffect(ds);
         piece_2.setEffect(ds);
@@ -188,9 +188,6 @@ public class SideController extends VBox {
         scores.add(lb_player2_score,2,1);
 
         InnerShadow innerShadow = new InnerShadow(BlurType.GAUSSIAN ,Color.color(0.4, 0.4, 0.4), 10,0,2,2);
-//        innerShadow.setOffsetX(2);
-//        innerShadow.setOffsetY(2);
-        //innerShadow.setColor(0,0,2,2Color.color(0.4, 0.4, 0.4));
 
         scores.setEffect(innerShadow);
 
@@ -272,10 +269,7 @@ public class SideController extends VBox {
             update_current_player();
 
         }
-
     }
-
-    //public voi
 
     // update display is no message is passed
     public void update_display(){
@@ -314,22 +308,11 @@ public class SideController extends VBox {
 
     }
 
-
-
-
-
-
-
-
     // overridden version of the resize method to give the board the correct size
     @Override
     public void resize(double width, double height) {
 
         //step 11
         super.resize(width, height);
-    }
-
-
-
-	
+    }	
 }

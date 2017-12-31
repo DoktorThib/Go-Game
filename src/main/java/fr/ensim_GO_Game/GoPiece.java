@@ -109,7 +109,7 @@ class GoPiece extends Group {
 
     // returns the type of this piece
     public int getPiece() {
-        // NOTE: this is to keep the compiler happy until you get to this point
+        /*Fix bug*/
         int player_value = 0;
 
         if(piece.getFill() == Color.WHITE) {

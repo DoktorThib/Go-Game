@@ -1,15 +1,11 @@
 
-/*
-#######
-Side Control CSS
-#######
-*/
+/*Side Control CSS*/
 
 
 /*top box css - current player */
 #current_player{
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
-    -fx-background-color: #000000;
+    -fx-background-color: #DCDCDC;
     -fx-background-radius: 0 0 5 5;
 }
 
@@ -19,12 +15,16 @@ Side Control CSS
     -fx-text-fill: #0076a3;
 }
 
+/*player control css - color setting*/
+#playerControl{
+	-fx-background-color: #DCDCDC;
+}
 
 
 /*Bottom box css - player display */
 #player_display{
     -fx-padding: 7;
-    -fx-background-color: #000000;
+    -fx-background-color: #DCDCDC;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
     -fx-background-radius: 5 5 0 0;
 }
@@ -41,14 +41,13 @@ Side Control CSS
 }
 
 #scores{
-    -fx-background-image: url('/sample/assets/wood.jpg');
     -fx-background-radius: 3;
 }
 
 #label_score{
     -fx-font-size: 17px;
     -fx-font-weight: bold;
-    -fx-text-fill: #292929;
+    -fx-text-fill: #DCDCDC;
 }
 
 #action_button{
@@ -58,7 +57,7 @@ Side Control CSS
             radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
     -fx-background-radius: 10;
     -fx-background-insets: 0,1,1;
-    -fx-text-fill: black;
+    -fx-text-fill: darkblue;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1 );
@@ -67,7 +66,7 @@ Side Control CSS
 #action_button:pressed {
     -fx-background-color:
             #0f73b2,
-            linear-gradient(white 50%, #d6d6d6 100%),
+            linear-gradient(white 50%, #DCDCDC 100%),
             radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);
     -fx-background-radius: 10;
     -fx-background-insets: 0,1,1;

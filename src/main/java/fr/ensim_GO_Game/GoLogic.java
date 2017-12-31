@@ -8,13 +8,13 @@ import java.util.Set;
 
 public class GoLogic implements InterfaceGoLogic  {
 
-	 private GoPiece[][] render;
+	 private GoPiece[][] board;
 	    private int player1_score, player2_score;
 	    private int move = 1;
 	    private boolean gameOver = false;
 
 	    GoLogic(GoPiece[][] board) {
-	        this.render = board;
+	        this.board = board;
 	        player1_score = 0;
 	        player2_score = 0;
 	    }
@@ -38,7 +38,7 @@ public class GoLogic implements InterfaceGoLogic  {
 
 	        takeOpponentPieces(selectedPiece, player);
 	        move++;
-	        for(GoPiece[] row: render)
+	        for(GoPiece[] row: board)
 	            for(GoPiece piece: row)
 	                piece.setForMoveLevel(move);
 
@@ -50,13 +50,13 @@ public class GoLogic implements InterfaceGoLogic  {
 
 	    private void undo() {
 	        move--;
-	        for(GoPiece[] row: render)
+	        for(GoPiece[] row: board)
 	            for(GoPiece piece: row) piece.undoLastMove();
 	    }
 
 	    private boolean isRepeatableState() {
 	        boolean isRepeatableState = true;
-	        for(GoPiece[] row: render)
+	        for(GoPiece[] row: board)
 	            for(GoPiece piece: row) isRepeatableState = piece.isReptableState() != false && isRepeatableState;
 	        return isRepeatableState;
 	    }
@@ -167,7 +167,7 @@ public class GoLogic implements InterfaceGoLogic  {
 	    }
 
 	    private Set<GoPiece> buildPatch(GoPiece origin, int player) {
-	        Set<GoPiece> patch = new HashSet<>();
+	        Set<GoPiece> patch = new HashSet<GoPiece>();
 	        buildPatch(origin, patch, player);
 	        return patch;
 	    }
@@ -196,11 +196,11 @@ public class GoLogic implements InterfaceGoLogic  {
 	    }
 
 	    private boolean isValidIndex(int x, int y) {
-	        return x >= 0 && y >= 0 && x < render.length && y < render[0].length;
+	        return x >= 0 && y >= 0 && x < board.length && y < board[0].length;
 	    }
 
 	    public GoPiece getPiece(int x, int y) {
-	        return render[x][y];
+	        return board[x][y];
 	    }
 
 
@@ -228,10 +228,10 @@ public class GoLogic implements InterfaceGoLogic  {
 	    }
 
 	    private List<List<GoPiece>> buildFreePatches() {
-	        Set<GoPiece> checkedFreePieces = new HashSet<>();
-	        List<List<GoPiece>> patches = new ArrayList<>();
+	        Set<GoPiece> checkedFreePieces = new HashSet<GoPiece>();
+	        List<List<GoPiece>> patches = new ArrayList<List<GoPiece>>();
 
-	        for(GoPiece[] row: render)
+	        for(GoPiece[] row: board)
 	            for(GoPiece piece: row)
 	                if(piece.getPiece() == 0 && !checkedFreePieces.contains(piece))
 	                    patches.add(buildFreePatch(checkedFreePieces, piece));
@@ -239,7 +239,7 @@ public class GoLogic implements InterfaceGoLogic  {
 	    }
 
 	    private List<GoPiece> buildFreePatch(Set<GoPiece> checkedFreePieces, GoPiece startPiece) {
-	        List<GoPiece> patch = new ArrayList<>();
+	        List<GoPiece> patch = new ArrayList<GoPiece>();
 	        if(checkedFreePieces.contains(startPiece)) return patch;
 	        checkedFreePieces.add(startPiece);
 	        patch.add(startPiece);
@@ -271,12 +271,10 @@ public class GoLogic implements InterfaceGoLogic  {
 
 	    }
 
-	    @Override
 	    public int playerOneScore() {
 	        return player1_score;
 	    }
 
-	    @Override
 	    public int playerTwoScore() {
 	        return player2_score;
 	    }

@@ -37,8 +37,5 @@ public class Main extends Application {
         scene.getStylesheets().addAll(this.getClass().getResource("go.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
-
-
     }
-
 }

@@ -5,6 +5,9 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Line;
 import javafx.scene.transform.Translate;
 import javafx.scene.paint.Color;
+
+import java.util.Random;
+
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 
@@ -49,6 +52,11 @@ public class GoBoard extends Pane {
     private Line[] vertical;
 
     private Translate[] vertical_t;
+    
+    static private final String[] urlBackground = {"https://digitalart.io/storage/artworks/690/Black-Samurai-Warrior-Wallpaper.jpeg",
+    												"https://www.google.fr/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjc1J3o2LTYAhUIOhQKHesMAKEQjBwIBA&url=http%3A%2F%2Ficloudpicture.com%2Fwp-content%2Fuploads%2F2016%2F12%2FBB-8-Star-Wars-Wallpaper-2016.jpg&psig=AOvVaw2kZSL1R_fUlU0w9QNvRSUn&ust=1514824945399410",
+    												"http://ensim-associations.univ-lemans.fr/_contents-images/ametys-internal%253Asites/ensim-associations/ametys-internal%253Acontents/ensim-elec-article/_metadata/content/_data/Logo_ENSIMElec_FULL_Version.png_250x250",
+    												"https://blog.soprasteria.com/wp-content/uploads/2015/09/lillogocarre1.png"};
 
     GoBoard(){
 
@@ -122,10 +130,10 @@ public class GoBoard extends Pane {
     /*Initialize the background and the lines*/
     private void initialiseLinesBackground() {
 
-        //add background color
+    	Random r = new Random();
         background = new Rectangle();
-        // TODO: add background
-        Image image = new Image("/ensim_GO_Game/assets/space.jpg");
+        /*4 different background*/
+        Image image = new Image(urlBackground[r.nextInt(urlBackground.length)]);
         ImagePattern imagepattern = new ImagePattern(image);
         background.setId("pane");
         background.setFill(imagepattern);
